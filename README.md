@@ -1,3 +1,4 @@
+
 # S. Tejaswini — Premium Personal Portfolio & AI Assistant
 
 A production-grade, dark wine-purple luxury personal portfolio website with an interactive AI assistant representative (**TejaBot**), in-app resume preview, verified credentials, and responsive mobile architecture.
@@ -190,4 +191,6 @@ git push -u origin main
 ---
 
 ## 📄 License
-Created for S. Tejaswini. Verified portfolio and curriculum vitae records.
+Created for S. Tejaswini . curriculum vitae records.
+=======
+# tejaswini-portfolio
