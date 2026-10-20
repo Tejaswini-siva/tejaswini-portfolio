@@ -1,0 +1,349 @@
+/**
+ * S. Tejaswini - Global Design System
+ * Theme: Dark Wine-Purple Luxury Editorial
+ * Font: Times New Roman throughout the entire website as explicitly requested.
+ */
+
+:root {
+  /* Color Palette */
+  --bg-darkest: #100812;
+  --bg-primary: #170D1D;
+  --card-elevated: #21142A;
+  --wine-deep: #321538;
+  --purple-primary: #8052B8;
+  --lavender-electric: #B89AF4;
+  --pink-soft: #D6A2CF;
+  --text-main: #F7F0FA;
+  --text-secondary: #C2B5CA;
+  --text-muted: #8E7F97;
+
+  /* Glassmorphism & Borders */
+  --border-subtle: rgba(184, 154, 244, 0.14);
+  --border-medium: rgba(184, 154, 244, 0.28);
+  --border-glow: rgba(184, 154, 244, 0.6);
+  --glass-bg: rgba(33, 20, 42, 0.65);
+  --glass-bg-hover: rgba(50, 21, 56, 0.85);
+
+  /* Shadows & Glows */
+  --glow-subtle: 0 0 25px rgba(128, 82, 184, 0.2);
+  --glow-intense: 0 0 35px rgba(184, 154, 244, 0.35);
+  --glow-pink: 0 0 30px rgba(214, 162, 207, 0.25);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+
+  /* Typography: Times New Roman */
+  --font-serif: "Times New Roman", Times, Baskerville, Georgia, serif;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 72px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-serif) !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-darkest);
+  color: var(--text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-darkest);
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(128, 82, 184, 0.18), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(50, 21, 56, 0.25), transparent 60%),
+    radial-gradient(ellipse 50% 30% at 20% 80%, rgba(128, 82, 184, 0.12), transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-darkest);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--wine-deep);
+  border-radius: 4px;
+  border: 2px solid var(--bg-darkest);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-primary);
+}
+
+/* Selection Color */
+::selection {
+  background: var(--purple-primary);
+  color: var(--text-main);
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif) !important;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--lavender-electric);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+a:hover {
+  color: var(--pink-soft);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--lavender-electric);
+  outline-offset: 3px;
+}
+
+/* Section Containers */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-wrapper {
+  padding: 5.5rem 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(184, 154, 244, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--pink-soft);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Wine Glow Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #F7F0FA 20%, #B89AF4 70%, #D6A2CF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-wine-text {
+  background: linear-gradient(135deg, #B89AF4 0%, #D6A2CF 50%, #F7F0FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Reusable Glass Card */
+.glass-card {
+  background: var(--card-elevated);
+  background: linear-gradient(145deg, rgba(33, 20, 42, 0.8) 0%, rgba(23, 13, 29, 0.9) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), var(--glow-subtle);
+}
+
+/* Button Variants */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  background: linear-gradient(135deg, #8052B8 0%, #4D1F63 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(184, 154, 244, 0.3);
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(128, 82, 184, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #9968D6 0%, #61277C 100%);
+  box-shadow: 0 6px 24px rgba(184, 154, 244, 0.45);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.6rem;
+  background: rgba(33, 20, 42, 0.7);
+  color: var(--text-main);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(50, 21, 56, 0.85);
+  border-color: var(--lavender-electric);
+  color: var(--pink-soft);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  background: transparent;
+  color: var(--lavender-electric);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--pink-soft);
+  color: var(--text-main);
+  background: rgba(184, 154, 244, 0.08);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 8, 18, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-content {
+  background: var(--card-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  max-width: 760px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), var(--glow-subtle);
+  padding: 2.2rem;
+  position: relative;
+  animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Badge tags */
+.tag-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(184, 154, 244, 0.08);
+  border: 1px solid rgba(184, 154, 244, 0.18);
+  color: var(--lavender-electric);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 3.5rem 0;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+  .modal-content {
+    padding: 1.5rem;
+  }
+}

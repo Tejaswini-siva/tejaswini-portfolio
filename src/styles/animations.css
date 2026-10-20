@@ -1,0 +1,208 @@
+/**
+ * S. Tejaswini - Animations & Interactive Motion
+ * Subtle luxury motion, custom cursor, typing blink, and performance optimizations.
+ */
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes blinkCursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(128, 82, 184, 0.25), 0 0 50px rgba(50, 21, 56, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 38px rgba(184, 154, 244, 0.4), 0 0 70px rgba(128, 82, 184, 0.3);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Typing Cursor */
+.typing-cursor {
+  display: inline-block;
+  margin-left: 3px;
+  width: 2px;
+  height: 1.15em;
+  background-color: var(--pink-soft);
+  vertical-align: text-bottom;
+  animation: blinkCursor 0.9s infinite;
+}
+
+/* Hero Profile Frame Animation */
+.hero-photo-wrapper {
+  position: relative;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(135deg, rgba(184, 154, 244, 0.45), rgba(128, 82, 184, 0.1), rgba(214, 162, 207, 0.5));
+  animation: pulseGlow 5s infinite ease-in-out;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  width: 280px;
+  height: 280px;
+  max-width: 100%;
+}
+
+.hero-photo-wrapper:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 0 45px rgba(184, 154, 244, 0.5), 0 0 80px rgba(128, 82, 184, 0.45);
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  border: 3px solid rgba(23, 13, 29, 0.9);
+}
+
+/* Custom Cursor Styles (Desktop Only) */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--pink-soft);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 0 10px var(--pink-soft);
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--lavender-electric);
+  background-color: rgba(184, 154, 244, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease;
+  box-shadow: 0 0 18px rgba(128, 82, 184, 0.3);
+}
+
+.custom-cursor-hover .custom-cursor-follower {
+  width: 52px;
+  height: 52px;
+  border-color: var(--pink-soft);
+  background-color: rgba(214, 162, 207, 0.12);
+}
+
+/* Card 3D Tilt container */
+.tilt-card {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Ambient Background Orbs */
+.ambient-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.orb-wine-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(128, 82, 184, 0.35) 0%, transparent 70%);
+  top: -100px;
+  right: -50px;
+}
+
+.orb-wine-2 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(50, 21, 56, 0.45) 0%, transparent 70%);
+  bottom: 10%;
+  left: -150px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .custom-cursor-dot, .custom-cursor-follower {
+    display: none !important;
+  }
+  .hero-photo-wrapper {
+    animation: none !important;
+  }
+}
+
+/* Touch devices: hide custom cursor to keep native responsiveness */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot, .custom-cursor-follower {
+    display: none !important;
+  }
+}
